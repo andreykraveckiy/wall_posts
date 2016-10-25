@@ -1,6 +1,6 @@
 WallPosts::Application.routes.draw do
   resources :posts, only: [:index, :create, :destroy]
-  # root 'devise/sessions#new' # root 'posts#index'
+  resources :comments, only: [:new, :create, :destroy]
   devise_for :users,
     controllers: { omniauth_callbacks: "users/omniauth_callbacks" },
     skip: [:passwords, :registrations]

@@ -1,0 +1,23 @@
+<ul class="posts">
+	<% @posts.each do |post| %>
+		<li>
+			<span class="author">
+				<%= post.user.name %>:				
+			</span>
+			<span class="content">
+				<%= post.content %>
+			</span>
+			<span class="timestamp">
+			  Posted <%= time_ago_in_words(post.created_at) %> ago.
+			</span>
+			<div class="span8">
+		    <% if post.comments.any? %>
+		      <h4>Microposts (<%= post.microposts.count %>)</h4>
+		      <ol class="comments">
+		        <%= render '_comments', post: post %>
+		      </ol>
+		    <% end %>
+  		</div>
+		</li>
+	<% end %>
+</ul>
