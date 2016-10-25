@@ -6,8 +6,13 @@ WallPosts::Application.routes.draw do
     skip: [:passwords, :registrations]
 
   devise_scope :user do
-    root 'posts#index', as: :authenticated_root
-    root 'devise/sessions#new', as: :unauthenticated_root
+    authenticated :user do
+      root 'posts#index', as: :authenticated_root
+    end
+
+    unauthenticated :user do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
