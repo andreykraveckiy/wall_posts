@@ -11,7 +11,7 @@
 				  <span>			  	
 					<%= form_tag(comments_path, method: :post) do %>
 						<%= text_area_tag :content %> <br>
-						<%= hidden_field_tag :commentable, comment %>
+						<%= hidden_field_tag :commentable, post %>
 						<%= submit_tag "Submit", class: "btn btn-large btn-primary" %>
 					<% end %>
 				  </span>

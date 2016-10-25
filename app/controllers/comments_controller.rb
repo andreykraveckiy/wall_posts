@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 	def create
-		@comment = current_user.comment.build(comment_params)
+		@comment = current_user.comments.build(comment_params)
 			if @comment.save
 				flash[:success] = "Micropost created!"
 				redirect_to root_url
@@ -13,6 +13,6 @@ class CommentsController < ApplicationController
 	private
 
 		def comment_params
-			params.require(:comment).permit(:content, :commentable)
+			params.permit(:content, :commentable)
 		end
 end
