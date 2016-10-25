@@ -1,6 +1,6 @@
 WallPosts::Application.routes.draw do
-  get "posts/index"
-  root 'home#index'
+  resources :posts, only: [:index, :create, :destroy]
+  root 'posts#index'
   devise_for :users,
     controllers: { omniauth_callbacks: "users/omniauth_callbacks" },
     skip: [:passwords, :registrations]
