@@ -1,9 +1,15 @@
 WallPosts::Application.routes.draw do
   resources :posts, only: [:index, :create, :destroy]
-  root 'posts#index'
+  # root 'devise/sessions#new' # root 'posts#index'
   devise_for :users,
     controllers: { omniauth_callbacks: "users/omniauth_callbacks" },
     skip: [:passwords, :registrations]
+
+  devise_scope :user do
+    root 'posts#index', as: :authenticated_root
+    root 'devise/sessions#new', as: :unauthenticated_root
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
