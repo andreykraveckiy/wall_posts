@@ -1,6 +1,7 @@
 <h1>All posts</h1>
 <% if user_signed_in? %>
-	
+	<h2><%= current_user.name %></h2>
+	<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
 <% else %>
 	<h2>You are not signed in.</h2>
 	<p>
