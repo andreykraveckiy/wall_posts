@@ -7,11 +7,20 @@
 			<span class="content">
 				<%= post.content %>
 			</span>
+			<% if user_signed_in? %>
+				  <span>			  	
+					<%= form_tag(comments_path, method: :post) do %>
+						<%= text_area_tag :content %> <br>
+						<%= hidden_field_tag :commentable, comment %>
+						<%= submit_tag "Submit", class: "btn btn-large btn-primary" %>
+					<% end %>
+				  </span>
+				<% end %>
 			<span class="timestamp">
 			  Posted <%= time_ago_in_words(post.created_at) %> ago.
 			</span>
 			<div class="span8">
-			<%= render 'comments/comments', post: post %>
+				<%= render 'comments/comments', post: post %>
   			</div>
 		</li>
 	<% end %>
