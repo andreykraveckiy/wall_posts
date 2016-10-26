@@ -2,16 +2,17 @@ class PostsController < ApplicationController
 	before_action :authenticate_user!, except: [:index]
 	
   def index
-  	@post = current_user.posts.build if user_signed_in?
   end
 
   def create
-  	@post = current_user.posts.build(post_params)
+  	@post = current_user.posts.build(post_params) if user_signed_in?
   	if @post.save
   		flash[:success] = "Post created!"
   	end 
-  	@post = current_user.posts.build if user_signed_in?
-  	render 'index'
+    respond_to do |format|
+  	  format.html { render 'index' }
+      format.js
+    end
   end
 
   def destroy
