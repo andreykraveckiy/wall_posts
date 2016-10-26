@@ -1,18 +1,16 @@
 class CommentsController < ApplicationController
-	def create
-		@comment = current_user.comments.build(comment_params)
+
+	def create	
+		@comment = Comment.new(comment_params)
 			if @comment.save
-				flash[:success] = "Micropost created!"
-				redirect_to root_url
-			else
-				render 'static_pages/home'
+				flash[:success] = "Comment created!"
 			end
-		redirect_to posts_path
+		redirect_to posts_url
 	end
 
 	private
 
 		def comment_params
-			params.permit(:content, :commentable)
+			params.permit(:content, :commentable_id, :commentable_type, :user_id)
 		end
 end

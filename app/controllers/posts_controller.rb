@@ -3,7 +3,6 @@ class PostsController < ApplicationController
 	
   def index
   	@post = current_user.posts.build if user_signed_in?
-    @comment = current_user.comments.build if user_signed_in?
   end
 
   def create
