@@ -1,8 +1,6 @@
 class PostsController < ApplicationController
 	before_action :authenticate_user!, except: [:index]
-	
-  def index
-  end
+  before_action :all_posts, only: [:index, :create]
 
   def create
   	@post = current_user.posts.build(post_params) if user_signed_in?
@@ -23,4 +21,8 @@ class PostsController < ApplicationController
   	def post_params
   		params.require(:post).permit(:content)
   	end
+
+    def all_posts
+      @posts = Post.all
+    end
 end
