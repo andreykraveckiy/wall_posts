@@ -3,19 +3,21 @@
 	<ul class="comments">
 		<% post.comments.each do |comment| %>
 			<li>
-				<span class="author">
-					<%= comment.user.name %>:			
-				</span>
-			  <span class="content">
-			  	<%= comment.content %>
-			  </span>
-			  <%= render 'comments/new_comment_form', object: comment%>
-			  <span class="timestamp">
-			    Posted <%= time_ago_in_words(comment.created_at) %> ago.
-			  </span>
-			  <span class="timestamp">
-			    <%= render 'comments/comments', post: comment %>
-			  </span>
+				<div id="<%= "#{comment.class}#{comment.id}" %>">
+					<span class="author">
+						<%= comment.user.name %>:			
+					</span>
+					<span class="content">
+						<%= comment.content %>
+					</span>
+					<%= render 'comments/new_comment_form', object: comment%>
+					<span class="timestamp">
+						Posted <%= time_ago_in_words(comment.created_at) %> ago.
+					</span>
+					<span class="timestamp">
+						<%= render 'comments/comments', post: comment %>
+					</span>
+				</div>
 			</li>
 		<% end %>
 	</ul>
