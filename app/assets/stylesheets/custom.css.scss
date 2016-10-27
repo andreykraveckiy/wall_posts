@@ -1,55 +1,55 @@
 @import "bootstrap";
 
 html {
-	overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 body {
-	padding-top: 20px;
+  padding-top: 20px;
 }
 
 section {
-	overflow: auto;
+  overflow: auto;
 }
 
 textarea {
-	resize: vertical;
+  resize: vertical;
 }
 
 h2, h4 {
-	line-height: 1;
+  line-height: 1;
 }
 
 h2 {
-	font-size: 3em;
-	letter-spacing: -2px;
-	margin-bottom: 30px;
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
 }
 
 h4 {
-	font-size: 1.2em;
-	letter-spacing: -1px;
-	margin-bottom: 30px;
-	text-align: center;
-	font-weight: normal;
-	color: #999;
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #999;
 }
 
 p {
-	font-size: 1.1em;
-	line-height: 1.7em;
+  font-size: 1.1em;
+  line-height: 1.7em;
 }
 
 /* miscellaneous */
 
 .debug_dump {
-	clear: both;
-	float: left;
-	width: 100%;
-	margin-top: 45px;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 span {
@@ -66,8 +66,8 @@ textarea,.uneditable-input {
   margin-bottom: 15px;
   text-align: center;
   -moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .posts {
@@ -83,7 +83,7 @@ textarea,.uneditable-input {
     }
   }
   p {
-  	text-align: left;
+    text-align: left;
   }
 }
 
@@ -96,20 +96,20 @@ textarea,.uneditable-input {
     border-top: 1px solid #e8e8e8;
   }
   form {
-  	width: 99%;
-  	button {
-  		text-align: left;
-  	}
+    width: 99%;
+    button {
+      text-align: left;
+    }
   }
 }
 
 .author {
-	color: 167e2d;
-	text-align: left;
+  color: 167e2d;
+  text-align: left;
 }
 
 .content {
-	margin-left: 5%;
+  margin-left: 5%;
   display: block;
   color: 070e42;
   text-align: left;

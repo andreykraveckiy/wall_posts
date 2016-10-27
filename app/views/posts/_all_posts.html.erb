@@ -1,21 +1,21 @@
 <ul class="posts">
-	<% @posts.each do |post| %>
-		<div id="<%= "#{post.class}#{post.id}" %>">
-			<li>
-				<span class="author">
-					<%= post.user.name %>:				
-				</span>
-				<span class="content">
-					<%= post.content %>
-				</span>
-				<%= render 'comments/new_button', object: post %>
-				<span class="timestamp">
-				  Posted <%= time_ago_in_words(post.created_at) %> ago.
-				</span>
-				<div class="span8" id="<%= "#{post.class}#{post.id}" %>com">
-					<%= render 'comments/comments', post: post %>
-	  		</div>
-			</li>
-		</div>
-	<% end %>
+  <% @posts.each do |post| %>
+    <div id="<%= "#{post.class}#{post.id}" %>">
+      <li>
+        <span class="author">
+          <%= post.user.name %>:        
+        </span>
+        <span class="content">
+          <%= post.content %>
+        </span>
+        <%= render 'comments/new_button', object: post %>
+        <span class="timestamp">
+          Posted <%= time_ago_in_words(post.created_at) %> ago.
+        </span>
+        <div class="span8" id="<%= "#{post.class}#{post.id}" %>com">
+          <%= render 'comments/comments', post: post %>
+        </div>
+      </li>
+    </div>
+  <% end %>
 </ul>

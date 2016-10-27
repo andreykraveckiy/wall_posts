@@ -1,25 +1,25 @@
 <div>
-	<section>
-		<% if user_signed_in? %>
-			<section>
-				<%= render 'user_info' %>			
-			</section>
-			<section>
-				<%= render 'new_post' %>
-			</section>
-		<% else %>
-			<section>
-				<%= render 'not_signed_in' %>
-			</section>		
-		<% end %>
-	</section>
+  <section>
+    <% if user_signed_in? %>
+      <section>
+        <%= render 'user_info' %>     
+      </section>
+      <section>
+        <%= render 'new_post' %>
+      </section>
+    <% else %>
+      <section>
+        <%= render 'not_signed_in' %>
+      </section>    
+    <% end %>
+  </section>
 </div>
 <div>
-	<% if @posts.any? %>
-		<div id="posts">
-			<%= render 'all_posts' %>
-		</div>
-	<% else %>
-		<h4>This wall is empty. Be first!</h4>
-	<% end %>
+  <% if @posts.any? %>
+    <div id="posts">
+      <%= render 'all_posts' %>
+    </div>
+  <% else %>
+    <h4>This wall is empty. Be first!</h4>
+  <% end %>
 </div>
