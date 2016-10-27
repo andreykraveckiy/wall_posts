@@ -12,9 +12,7 @@ class CommentsController < ApplicationController
 
   def create  
     @comment = Comment.new(comment_params)
-    if @comment.save
-      flash[:success] = "Comment created!"
-    end
+    @comment.save
     respond_to do |format|
       format.html { redirect_to posts_url }
       format.js

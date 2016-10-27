@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :omniauthable, omniauth_providers: [:vkontakte]
   has_many :posts, inverse_of: :user
   has_many :comments, as: :commentable
+  validates :name, presence: true
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

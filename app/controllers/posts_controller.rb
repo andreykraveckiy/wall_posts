@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params) if user_signed_in?
     if @post.save
-      flash[:success] = "Post created!"
+      flash.now[:success] = "Post created!"
     end 
     respond_to do |format|
       format.html { render 'index' }

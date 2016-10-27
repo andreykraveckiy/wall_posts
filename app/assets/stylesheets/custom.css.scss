@@ -78,22 +78,17 @@ textarea,.uneditable-input {
     overflow: auto;
     padding: 10px 0;
     border: 1px solid #aeaeae;
-    &:last-child {
-      border-bottom: 1px solid #aeaeae;
-    }
   }
   p {
-    text-align: left;
+    text-align: center;
   }
 }
 
 .comments {
   list-style: none;
-  margin: 20px 0 0 0;
   width: 99%;
   li {
     padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
   }
   form {
     width: 99%;
@@ -104,18 +99,18 @@ textarea,.uneditable-input {
 }
 
 .author {
-  color: 167e2d;
+  vertical-align:top;
+  color: #167e2d;
   text-align: left;
 }
 
 .content {
-  margin-left: 5%;
   display: block;
-  color: 070e42;
+  color: #070e42;
   text-align: left;
 }
 
 .timestamp {
-  color: 564f27;
-  text-align: right;
+  color: #564f27;
+  text-align: left;
 }
