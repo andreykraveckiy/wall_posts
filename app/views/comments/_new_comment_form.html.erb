@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
 	<span>			  	
-		<%= form_tag(comments_path, method: :post) do %>
+		<%= form_tag(comments_path, method: :post, remote: true) do %>
 			<%= text_area_tag :content %> <br>
 			<%= hidden_field_tag :commentable_type, object.class %>
 			<%= hidden_field_tag :commentable_id, object.id %>

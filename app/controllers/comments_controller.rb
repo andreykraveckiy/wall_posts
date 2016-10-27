@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-	#before_action :set_parent, only: [:create]
+	before_action :parent_post, only: [:create]
 
 	def create	
 		@comment = Comment.new(comment_params)
@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
 			params.permit(:content, :commentable_id, :commentable_type, :user_id)
 		end
 
-		def set_parent
+		def parent_post			
 			if params[:commentable_type].eql?("Post")
 				@post = Post.find(params[:commentable_id])
 			else
