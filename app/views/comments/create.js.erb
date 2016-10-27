@@ -1,1 +1,2 @@
-$('#<%= @id %>com').html("<%= escape_javascript(render('comments', post: @post)) %>");
+$('#<%= @id %>com').html("<%= escape_javascript(render('comments', post: @object)) %>")
+$('#<%= @id %>new_form').html("<%= escape_javascript(render 'comments/new_button', object: @object) %>")
