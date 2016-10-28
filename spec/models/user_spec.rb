@@ -28,5 +28,5 @@ describe User do
     it "should have the right microposts in the right order" do
       expect(user.posts.to_a).to eq [newer_post, older_post]
     end
-  end
+  end  
 end

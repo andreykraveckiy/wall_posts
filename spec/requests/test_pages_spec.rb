@@ -21,6 +21,8 @@ describe "Pages" do
       let(:user) { FactoryGirl.create(:user) }
       let!(:p1) { FactoryGirl.create(:post, user: user) }
       let!(:p2) { FactoryGirl.create(:post, user: user) }
+      let!(:c1) { FactoryGirl.create(:comment, user: user, commentable: p1) }
+      let!(:c2) { FactoryGirl.create(:comment, user: user, commentable: c1) }
 
       before { visit posts_path }
       
@@ -35,6 +37,11 @@ describe "Pages" do
       describe "posts" do
         it { should have_content(p1.content) }
         it { should have_content(p2.content) }
+      end
+
+      describe "comments" do
+        it { should have_content(c1.content) }
+        it { should have_content(c2.content) }
       end
     end
   end
