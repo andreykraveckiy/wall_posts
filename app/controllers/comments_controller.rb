@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :parent_object, only: [:new, :create]
-  before_action :set_id, only: [:new, :create]
+  before_action :set_page_element_id, only: [:new, :create]
+  before_action :set_id, only: [:edit]
 
   def new
     @comment = Comment.new
@@ -13,6 +14,22 @@ class CommentsController < ApplicationController
   def create  
     @comment = Comment.new(comment_params)
     @comment.save
+    respond_to do |format|
+      format.html { redirect_to posts_url }
+      format.js
+    end
+  end
+
+  def edit
+    respond_to do |format|
+      format.html { redirect_to posts_url }
+      format.js
+    end
+  end
+
+  def update 
+    @comment = Comment.find(params[:id])
+    @comment.update_attributes(comment_params)
     respond_to do |format|
       format.html { redirect_to posts_url }
       format.js
@@ -48,7 +65,17 @@ class CommentsController < ApplicationController
       end
     end
 
-    def set_id
+    def set_page_element_id
       @page_element_id = "#{params[:commentable_type]}#{params[:commentable_id]}"
+    end
+
+    def set_id
+      @comment = Comment.find(params[:id])
+      if @comment.commentable_type.eql?("Post")
+        @object = Post.find(@comment.commentable_id)
+      else
+        @object = Comment.find(@comment.commentable_id)
+      end
+      @element_id = "Comment#{params[:id]}"
     end
 end

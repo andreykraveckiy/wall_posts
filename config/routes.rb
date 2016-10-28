@@ -1,6 +1,6 @@
 WallPosts::Application.routes.draw do
-  resources :posts, only: [:index, :create, :destroy]
-  resources :comments, only: [:new, :create, :destroy]
+  resources :posts, only: [:index, :create, :edit, :update, :destroy]
+  resources :comments, only: [:new, :create, :edit, :update, :destroy]
   devise_for :users,
     controllers: { omniauth_callbacks: "users/omniauth_callbacks" },
     skip: [:passwords, :registrations]
