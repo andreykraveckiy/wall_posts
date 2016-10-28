@@ -17,7 +17,11 @@ describe "Pages" do
 
   describe "index page" do
 
-    describe "without authenticated user" do
+    describe "without unauthenticated user" do
+      let(:user) { FactoryGirl.create(:user) }
+      let!(:p1) { FactoryGirl.create(:post, user: user) }
+      let!(:p2) { FactoryGirl.create(:post, user: user) }
+
       before { visit posts_path }
       
       it { should have_content('You are not signed in.') }
@@ -26,6 +30,11 @@ describe "Pages" do
       it "should have the right direction for 'Sign in page' link" do
         click_link 'Sign in page'
         expect(page).to have_content('Sign in with Vkontakte')
+      end
+
+      describe "posts" do
+        it { should have_content(p1.content) }
+        it { should have_content(p2.content) }
       end
     end
   end

@@ -34,6 +34,6 @@ class CommentsController < ApplicationController
     end
 
     def set_id
-      @id = "#{params[:commentable_type]}#{params[:commentable_id]}"
+      @page_element_id = "#{params[:commentable_type]}#{params[:commentable_id]}"
     end
 end
