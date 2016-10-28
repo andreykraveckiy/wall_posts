@@ -13,10 +13,10 @@
           <span class="timestamp">
             Posted <%= time_ago_in_words(comment.created_at) %> ago.
           </span>
-          <% if current_user == comment.user %>
-            <%= link_to "edit", edit_comment_path(comment), remote: true%>
-          <% end %>
-          <span class="buttons">               
+          <span class="buttons">   
+            <% if current_user == comment.user %>
+              < <%= link_to "edit", edit_comment_path(comment), remote: true%> >
+            <% end %>            
             <%= render 'comments/new_button', object: comment %>
           </span> 
         </div>
