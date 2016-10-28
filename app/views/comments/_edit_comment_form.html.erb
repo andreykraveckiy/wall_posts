@@ -2,7 +2,7 @@
 	<% if user_signed_in? %>
     <%= form_tag(comment_path, method: :patch, remote: true) do %>
       <%= text_area_tag :content %> <br>
-      <%= submit_tag "Comment", class: "btn btn-large btn-primary" %>
+      <%= submit_tag "Update", class: "btn btn-large btn-primary" %>
     <% end %>
 	<% end %>
 <div
