@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :parent_object, only: [:new, :create]
-  before_action :set_page_element_id, only: [:new, :create]
-  before_action :set_id, only: [:edit, :update]
+  before_action :set_parent_id, only: [:new, :create]
+  before_action :set_own_id, only: [:edit, :update]
 
   def new
     @comment = Comment.new
@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    @page_element_id = "#{@comment.commentable_type}#{@comment.commentable_id}"
+    @parent_id = "#{@comment.commentable_type}#{@comment.commentable_id}"
     if @comment.commentable_type.eql?("Post")
       @object = Post.find(@comment.commentable_id)
     else
@@ -65,11 +65,11 @@ class CommentsController < ApplicationController
       end
     end
 
-    def set_page_element_id
-      @page_element_id = "#{params[:commentable_type]}#{params[:commentable_id]}"
+    def set_parent_id
+      @parent_id = "#{params[:commentable_type]}#{params[:commentable_id]}"
     end
 
-    def set_id
-      @element_id = "Comment#{params[:id]}"
+    def set_own_id
+      @own_id = "Comment#{params[:id]}"
     end
 end
