@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :parent_object, only: [:new, :create]
   before_action :set_page_element_id, only: [:new, :create]
-  before_action :set_id, only: [:edit]
+  before_action :set_id, only: [:edit, :update]
 
   def new
     @comment = Comment.new
@@ -70,12 +70,6 @@ class CommentsController < ApplicationController
     end
 
     def set_id
-      @comment = Comment.find(params[:id])
-      if @comment.commentable_type.eql?("Post")
-        @object = Post.find(@comment.commentable_id)
-      else
-        @object = Comment.find(@comment.commentable_id)
-      end
       @element_id = "Comment#{params[:id]}"
     end
 end

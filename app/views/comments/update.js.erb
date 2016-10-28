@@ -1,1 +1,1 @@
-$('#<%= @page_element_id %>com').html("<%= escape_javascript(render('comments', post: @object)) %>")
+$('#<%= @element_id %>edit_form').html("<%= escape_javascript(render('comment_partial', comment: @comment)) %>")
