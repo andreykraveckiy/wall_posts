@@ -15,7 +15,7 @@
             <% if current_user == post.user %>
               < <%= link_to "edit", edit_post_path(post), remote: true%> >
             <% end %>       
-            <%= render 'comments/new_button', object: post %>
+            <%= render 'comments/comment_delete', object: post %>
           </span>
         </div>
         <div class="span8" id="<%= "#{post.class}#{post.id}" %>com">
