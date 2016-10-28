@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
   before_action :parent_object, only: [:new, :create]
   before_action :set_parent_id, only: [:new, :create]
-  before_action :set_own_id, only: [:edit, :update]
+  before_action :set_own_id, only: [:edit]
+  before_action :find_parent_by_own_id, only: [:update, :destroy]
 
   def new
     @comment = Comment.new
@@ -21,14 +22,14 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @comment = Comment.find(params[:id])
     respond_to do |format|
       format.html { redirect_to posts_url }
       format.js
     end
   end
 
-  def update 
-    @comment = Comment.find(params[:id])
+  def update     
     @comment.update_attributes(comment_params)
     respond_to do |format|
       format.html { redirect_to posts_url }
@@ -36,14 +37,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy
-    @comment = Comment.find(params[:id])
-    @parent_id = "#{@comment.commentable_type}#{@comment.commentable_id}"
-    if @comment.commentable_type.eql?("Post")
-      @object = Post.find(@comment.commentable_id)
-    else
-      @object = Comment.find(@comment.commentable_id)
-    end
+  def destroy    
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to posts_url }
@@ -71,5 +65,16 @@ class CommentsController < ApplicationController
 
     def set_own_id
       @own_id = "Comment#{params[:id]}"
+    end
+
+    def find_parent_by_own_id
+      @comment = Comment.find(params[:id]) # in this keys own_id =params[:id]
+
+      @parent_id = "#{@comment.commentable_type}#{@comment.commentable_id}"
+      if @comment.commentable_type.eql?("Post")
+        @object = Post.find(@comment.commentable_id)
+      else
+        @object = Comment.find(@comment.commentable_id)
+      end
     end
 end

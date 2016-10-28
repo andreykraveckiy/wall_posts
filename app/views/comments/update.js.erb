@@ -1,1 +1,1 @@
-$('#<%= @own_id %>edit_form').html("<%= escape_javascript(render('comment_partial', comment: @comment)) %>")
+$('#<%= @parent_id %>com').html("<%= escape_javascript(render('comments', post: @object)) %>")
