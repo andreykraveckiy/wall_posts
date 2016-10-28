@@ -19,6 +19,21 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @page_element_id = "#{@comment.commentable_type}#{@comment.commentable_id}"
+    if @comment.commentable_type.eql?("Post")
+      @object = Post.find(@comment.commentable_id)
+    else
+      @object = Comment.find(@comment.commentable_id)
+    end
+    @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to posts_url }
+      format.js
+    end
+  end
+
   private
 
     def comment_params

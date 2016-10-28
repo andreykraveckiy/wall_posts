@@ -1,9 +1,10 @@
 <div id="<%= "#{object.class}#{object.id}" %>new_form">
   <% if user_signed_in? %>
-    <%= form_tag(new_comment_path, method: :get, remote: true) do %>
-      <%= hidden_field_tag :commentable_type, object.class %>
-      <%= hidden_field_tag :commentable_id, object.id %>
-      <%= submit_tag "Comment", class: "btn btn-sm btn-primary" %>
-    <% end %>
+    <%= link_to "comment", new_comment_path(commentable_type: object.class, commentable_id: object.id), remote: true %>
+  <% end %>
+  <% if current_user == object.user %>
+    <%= link_to "delete", object, method: :delete, data: { confirm: "You sure?" }, title: object.content, remote: true %>
+    <%= link_to "edit", '#' %>
+    <%= link_to "comment", '#' %>
   <% end %>
 </div>

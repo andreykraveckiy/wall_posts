@@ -1,12 +1,10 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :all_posts, only: [:index, :create]
+  before_action :all_posts, only: [:index, :create, :destroy]
 
   def create
     @post = current_user.posts.build(post_params) if user_signed_in?
-    if @post.save
-      flash.now[:success] = "Post created!"
-    end 
+    @post.save
     respond_to do |format|
       format.html { render 'index' }
       format.js
@@ -14,6 +12,12 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    respond_to do |format|
+      format.html { render 'index' }
+      format.js
+    end
   end
 
   private
