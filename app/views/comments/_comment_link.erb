@@ -2,7 +2,4 @@
   <% if user_signed_in? %>
     <%= link_to "comment", new_comment_path(commentable_type: object.class, commentable_id: object.id), remote: true %>
   <% end %>
-  <% if current_user == object.user %>
-    <%= link_to "delete", object, method: :delete, data: { confirm: "You sure?" }, title: object.content, remote: true %>
-  <% end %>
 </div>
