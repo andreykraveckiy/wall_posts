@@ -77,10 +77,10 @@ textarea,.uneditable-input {
   li {
     overflow: auto;
     padding: 10px 0;
-    border: 1px solid #aeaeae;
+    border-left: 1px solid #aeaeae;
   }
   p {
-    text-align: center;
+    text-align: left;
   }
 }
 
@@ -88,7 +88,7 @@ textarea,.uneditable-input {
   list-style: none;
   width: 99%;
   li {
-    padding: 10px 0;
+    padding: 5px 0;
   }
   form {
     width: 99%;
@@ -102,15 +102,26 @@ textarea,.uneditable-input {
   vertical-align:top;
   color: #167e2d;
   text-align: left;
+  margin-left: 10px;
 }
 
 .content {
+  overflow: visible;
   display: block;
   color: #070e42;
   text-align: left;
+  margin-left: 10px;
 }
 
 .timestamp {
   color: #564f27;
   text-align: left;
+  margin-left: 10px;
+}
+
+.buttons {
+  text-align: left;
+  margin-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
 }

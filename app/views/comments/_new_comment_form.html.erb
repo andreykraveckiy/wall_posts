@@ -1,5 +1,5 @@
-<% if user_signed_in? %>
-  <span>          
+<div>
+	<% if user_signed_in? %>
     <%= form_tag(comments_path, method: :post, remote: true) do %>
       <%= text_area_tag :content %> <br>
       <%= hidden_field_tag :commentable_type, object.class %>
@@ -7,5 +7,5 @@
       <%= hidden_field_tag :user_id, current_user.id %>
       <%= submit_tag "Comment", class: "btn btn-large btn-primary" %>
     <% end %>
-  </span>
-<% end %>
+	<% end %>
+<div
